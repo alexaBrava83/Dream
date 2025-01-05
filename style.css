@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 10px;
+    text-align: center;
+}
+.table-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+    gap: 5px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+.cell {
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s;
+    font-size: 14px;
+}
+.cell.selected {
+    background-color: #4caf50;
+    color: white;
+}
+.summary {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+@media (min-width: 600px) {
+    .cell {
+        font-size: 16px;
+    }
+}
