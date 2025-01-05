@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>На мрію</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 10px;
+            text-align: center;
+        }
+        .table-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+            gap: 5px;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        .cell {
+            aspect-ratio: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #f9f9f9;
+            transition: background-color 0.3s;
+            font-size: 14px;
+        }
+        .cell.selected {
+            background-color: #4caf50;
+            color: white;
+        }
+        .summary {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        @media (min-width: 600px) {
+            .cell {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>На мрію</h1>
+    <div class="table-container" id="table-container"></div>
+    <div class="summary">Загальна сума: <span id="total">0</span> грн</div>
+
+    <script>
+        const tableContainer = document.getElementById('table-container');
+        const totalElement = document.getElementById('total');
+        let total = 0;
+
+        // Create 365 cells
+        for (let i = 1; i <= 365; i++) {
+            const cell = document.createElement('div');
+            cell.classList.add('cell');
+            cell.textContent = i;
+            cell.addEventListener('click', () => {
+                if (!cell.classList.contains('selected')) {
+                    cell.classList.add('selected');
+                    total += i;
+                } else {
+                    cell.classList.remove('selected');
+                    total -= i;
+                }
+                totalElement.textContent = total;
+            });
+            tableContainer.appendChild(cell);
+        }
+    </script>
+</body>
+</html>
+
